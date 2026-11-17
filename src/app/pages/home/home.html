@@ -1,17 +1,24 @@
-<section>
-  <h2>Benvenuto nel Duck Shop!</h2>
-  <p>Le paperelle più allegre del web.</p>
-  <a routerLink="/shop">Vai allo shop</a>
+<section class="hero">
+  <div>
+    <h1>Duck Shop</h1>
+    <p>Una paperella a cui spiegare il codice. Una nuova compagna per la tua collezione.</p>
+    <a class="cta" routerLink="/shop">Vai allo shop</a>
+  </div>
+  <!-- Sostituire con la foto della collezione. -->
+  <div class="photo" aria-hidden="true"></div>
 </section>
 
 <section>
-  <h3>In evidenza</h3>
+  <h2>In evidenza</h2>
+  <div class="grid">
   @for (duck of featured; track duck.id) {
-    <article>
-      <img [src]="duck.image" [alt]="duck.name" />
-      <h4>{{ duck.name }}</h4>
+    <article class="card">
+      <!-- Sostituire il riquadro con img usando duck.image e duck.name come alt. -->
+      <div class="photo" aria-hidden="true"></div>
+      <h3>{{ duck.name }}</h3>
       <p>{{ duck.price | currency: 'EUR' }}</p>
       <a [routerLink]="['/shop', duck.id]">Dettagli</a>
     </article>
   }
+  </div>
 </section>

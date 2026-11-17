@@ -1,27 +1,47 @@
-<h2>Shop</h2>
+<h1>Shop</h1>
 
-<input type="text" placeholder="Cerca una paperella..." (input)="onSearch($event)" />
+<label for="duck-search">Cerca nel catalogo</label>
+<input
+  id="duck-search"
+  type="search"
+  placeholder="Cerca una paperella..."
+  (input)="onSearch($event)"
+/>
 
-<div>
+<div class="filters">
   @for (cat of categories; track cat) {
-    <button (click)="selected.set(cat)" [class.active]="selected() === cat">{{ cat }}</button>
+    <button
+      type="button"
+      (click)="selected.set(cat)"
+      [class.active]="selected() === cat"
+      [attr.aria-pressed]="selected() === cat"
+    >
+      {{ cat }}
+    </button>
   }
 </div>
 
-@if (ducks().length === 0) {
-  <p>Nessuna paperella trovata 🦆</p>
-}
-
-<section>
+<section class="grid" aria-label="Catalogo paperelle">
   @for (duck of ducks(); track duck.id) {
-    <article>
-      <img [src]="duck.image" [alt]="duck.name" />
+    <article class="card">
+      <!-- Quando avrai le foto, sostituisci il div con <img [src]="duck.image" [alt]="duck.name" />. -->
+      <div class="photo" aria-hidden="true"></div>
+
       <h3>{{ duck.name }}</h3>
       <p>{{ duck.price | currency: 'EUR' }}</p>
-      <a [routerLink]="['/shop', duck.id]">Dettagli</a>
-      <button (click)="addToCart(duck)" [disabled]="!duck.inStock">
-        {{ duck.inStock ? 'Aggiungi al carrello' : 'Esaurita' }}
-      </button>
+
+      <div class="actions">
+        <a [routerLink]="['/shop', duck.id]">Dettagli</a>
+        <button
+          type="button"
+          (click)="addToCart(duck)"
+          [disabled]="!duck.inStock"
+        >
+          {{ duck.inStock ? 'Aggiungi al carrello' : 'Esaurita' }}
+        </button>
+      </div>
     </article>
+  } @empty {
+    <p>Nessuna paperella trovata.</p>
   }
 </section>

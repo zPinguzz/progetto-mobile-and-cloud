@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+/* I due .woff2 vuoti riservano i percorsi per la build. Sostituirli con i font OffBit. */
+@font-face {
+  font-family: 'OffBit Regular';
+  src: url('./assets/fonts/OffBit-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'OffBit 101';
+  src: url('./assets/fonts/OffBit-101Bold.ttf') format('truetype');
+  font-display: swap;
+}
+:root {
+  --background: #281150;
+  --surface: #341c62;
+  --photo: #40276e;
+  --accent: #caff60;
+  --text: #fff;
+  --error: #ffadba;
+  --line: color-mix(in srgb, var(--accent) 35%, transparent);
+  --body: 'OffBit Regular', monospace;
+  --display: 'OffBit 101', monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--background); color: var(--text); font: 1.05rem/1.55 var(--body); }
+app-root { display: flex; flex-direction: column; min-height: 100vh; }
+header, main, footer { width: min(76rem, 92%); margin-inline: auto; }
+header, nav, .filters, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+header { justify-content: space-between; padding-block: 1rem; border-bottom: 1px solid var(--line); }
+.brand { font: 2rem var(--display); text-decoration: none; }
+nav a { padding: .45rem .6rem; text-decoration: none; }
+nav .active, nav a:hover { text-decoration: underline; text-underline-offset: .4em; }
+main { flex: 1; padding-block: clamp(2rem, 5vw, 5rem); }
+footer { border-top: 1px solid var(--line); padding-block: 1rem; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.08; color: var(--accent); margin: 0 0 1rem; overflow-wrap: anywhere; }
+h1 { font-size: clamp(2.7rem, 6vw, 5.5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: 1.6rem; }
+a { color: var(--accent); text-underline-offset: .2em; }
+a:hover { color: var(--text); }
+button, input, .cta { font: inherit; border: 1px solid var(--accent); border-radius: .3rem; padding: .55rem .9rem; }
+button, .cta { background: var(--accent); color: var(--background); cursor: pointer; }
+.cta { display: inline-block; text-decoration: none; }
+button:hover:enabled, .cta:hover { color: var(--accent); background: var(--background); }
+button:disabled { opacity: .65; cursor: default; }
+:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+.hero, .detail { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(2rem, 5vw, 5rem); margin-bottom: 3rem; }
+.hero p { max-width: 43ch; }
+.photo { background: var(--photo); border: 1px solid var(--accent); aspect-ratio: 16 / 10; }
+.hero .photo, .detail .photo { aspect-ratio: 4 / 3; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.25rem; }
+.card { display: flex; flex-direction: column; padding: 1rem; background: var(--surface); border: 1px solid var(--accent); border-radius: .4rem; }
+.card .photo { margin-bottom: 1.25rem; }
+.card p { margin: auto 0 1rem; }
+.card .actions { justify-content: space-between; }
+.filters { margin: 1rem 0 2rem; }
+.filters button:not(.active), input { background: var(--surface); color: var(--text); }
+.filters button:hover:enabled { background: var(--accent); color: var(--background); }
+.filters button.active { text-decoration: underline; text-underline-offset: .2em; }
+label { display: block; margin-bottom: .4rem; }
+input { width: min(100%, 32rem); }
+.table-scroll { overflow-x: auto; padding: .4rem; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: .8rem; border-bottom: 1px solid var(--line); }
+th { color: var(--accent); }
+td { white-space: nowrap; }
+.error { color: var(--error); }
+@media (max-width: 45rem) {
+  .hero, .detail { grid-template-columns: 1fr; gap: 1.25rem; }
+  nav, .filters { gap: .4rem; }
+}
+
