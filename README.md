@@ -88,9 +88,8 @@ The app runs at `http://localhost:4200/`.
 | `npm test`      | Run tests with Vitest              |
 
 ## Project status
-
-First draft. To do:
-
+Version: 0.5 
+To do:
 - [ ] Replace placeholders with real images (`assets/ducks/`)
 - [ ] Connect a backend/cloud service instead of static data
 - [ ] Cart persistence
@@ -98,4 +97,6 @@ First draft. To do:
 
 ## Author
 
-[zPinguzz](https://github.com/zPinguzz)
+[zPinguzz - Riccardo Cotani](https://github.com/zPinguzz)
+[ - Diego Sannipoli]()
+[ - Jacqueline Pasolea Emanuela]()
