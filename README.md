@@ -86,6 +86,7 @@ The app runs at `http://localhost:4200/`.
 | `npm run build` | Production build into `dist/`      |
 | `npm run watch` | Build in watch mode (development)  |
 | `npm test`      | Run tests with Vitest              |
+| `ng serve`      | Run the Local host with angular    |
 
 ## Project status
 Version: 0.5 
