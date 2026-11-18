@@ -1,59 +1,101 @@
-# DuckShop
+# 🦆 Duck Shop
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.6.
+Online rubber duck shop built with **Angular** and **TypeScript**. Project for the Mobile and Cloud course.
 
-## Development server
+Catalog, product detail and shopping cart, all client-side. Data is static for now.
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
+- **Home** with hero section and featured ducks
+- **Shop** with the full catalog
+- **Product detail** page (`/shop/:id`)
+- **Cart** with add, remove, quantity update and total
+- **About** page with contact info
+- Lazy-loaded pages via the router
+
+## Stack
+
+- Angular 22 (standalone components, signals)
+- TypeScript
+- RxJS
+- Vitest + jsdom for testing
+- Prettier
+
+## Project structure
+
+```
+src/app/
+├── components/partials/header/   # header with navigation
+├── models/duck.model.ts          # Duck, CartItem, DuckCategory
+├── pages/
+│   ├── home/
+│   ├── shop/
+│   ├── duck-detail/
+│   ├── cart/
+│   └── about/
+├── services/
+│   ├── duck.service.ts           # catalog (static data)
+│   └── cart.service.ts           # cart state with signals
+├── app.routes.ts
+└── app.config.ts
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Routing
 
-## Code scaffolding
+| Path         | Page            |
+|--------------|-----------------|
+| `/`          | Home            |
+| `/shop`      | Catalog         |
+| `/shop/:id`  | Duck detail     |
+| `/cart`      | Cart            |
+| `/about`     | About           |
+| `**`         | Redirects to `/`|
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Data model
 
-```bash
-ng generate component component-name
+```ts
+interface Duck {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  category: 'classic' | 'themed' | 'giant';
+  image: string;
+  inStock: boolean;
+}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Getting started
+
+Requirements: Node.js and npm.
 
 ```bash
-ng generate --help
+git clone https://github.com/zPinguzz/progetto-mobile-and-cloud.git
+cd progetto-mobile-and-cloud
+npm install
+npm start
 ```
 
-## Building
+The app runs at `http://localhost:4200/`.
 
-To build the project run:
+## Scripts
 
-```bash
-ng build
-```
+| Command         | Description                        |
+|-----------------|------------------------------------|
+| `npm start`     | Dev server with live reload        |
+| `npm run build` | Production build into `dist/`      |
+| `npm run watch` | Build in watch mode (development)  |
+| `npm test`      | Run tests with Vitest              |
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Project status
 
-## Running unit tests
+First draft. To do:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- [ ] Replace placeholders with real images (`assets/ducks/`)
+- [ ] Connect a backend/cloud service instead of static data
+- [ ] Cart persistence
+- [ ] Checkout
 
-```bash
-ng test
-```
+## Author
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[zPinguzz](https://github.com/zPinguzz)
