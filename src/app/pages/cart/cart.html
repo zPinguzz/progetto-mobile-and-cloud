@@ -26,6 +26,8 @@
   </table>
 
   <p><strong>Totale: {{ cart.total() | currency: 'EUR' }}</strong></p>
+<div class="actions">
   <button (click)="cart.clear()">Svuota</button>
   <button>Checkout</button>
-}
+</div>
+} 
